@@ -14,14 +14,17 @@ SHEET = GSPREAD_CLIENT.open('BabyCalc')
 
 def get_baby_data():
     """
-    Get baby's data from the user
+    Get baby's data from the user.
+    Run a while loop to collect a valid string of data from the user.
+    Loop will repeat until valid data received (string of 2 numbers separated
+    by commas).
     """
     while True:
         print("Please enter your baby's age in weeks and weight in kilograms")
         print("Data should be two numbers separated by a comma")
         print("Example: 4, 3.57\n")
 
-        baby_str = input("Enter your data here:")
+        baby_str = input("Enter your data here: ")
         
         baby_data = baby_str.split(",")
 
@@ -29,9 +32,13 @@ def get_baby_data():
             print("Baby is valid!")
             break
 
+    return baby_data
+
 def validate_data(values):
     """
-    Checks if user inputs the correct number of values and returns an error if not
+    Converts all string values into floats inside the try.
+    Raises ValueError if strings cannot be converted into float,
+    or if there aren't the correct number of values.
     """
     try:
         [float(value) for value in values]
@@ -45,4 +52,15 @@ def validate_data(values):
 
     return True
 
+def update_baby_worksheet(data):
+    """
+    Update baby worksheet, add new row with list data provided
+    """
+    print("Updating baby worksheet...\n")
+    baby_worksheet = SHEET.worksheet("Sheet1")
+    baby_worksheet.append_row(data)
+    print("Baby worksheet updated successfully.\n")
+
 data = get_baby_data()
+baby_data = [float(num) for num in data]
+update_baby_worksheet(baby_data)
