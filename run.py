@@ -16,22 +16,33 @@ def get_baby_data():
     """
     Get baby's data from the user
     """
-    print("Please enter your baby's age in weeks and weight in kilograms")
-    print("Data should be two numbers separated by a comma")
-    print("Example: 4, 3.57\n")
+    while True:
+        print("Please enter your baby's age in weeks and weight in kilograms")
+        print("Data should be two numbers separated by a comma")
+        print("Example: 4, 3.57\n")
 
-    baby_str = input("Enter your data here:")
-    
-    baby_data = baby_str.split(",")
-    validate_data(baby_data)
+        baby_str = input("Enter your data here:")
+        
+        baby_data = baby_str.split(",")
+
+        if validate_data(baby_data):
+            print("Baby is valid!")
+            break
 
 def validate_data(values):
+    """
+    Checks if user inputs the correct number of values and returns an error if not
+    """
     try:
+        [float(value) for value in values]
         if len(values) != 2:
             raise ValueError(
                 f"Exactly 2 values required, you provided {len(values)}"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
 
-get_baby_data()
+    return True
+
+data = get_baby_data()
