@@ -1,4 +1,6 @@
 {
     "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Gitpod Dark"
+    "workbench.colorTheme": "Gitpod Dark",
+    "workbench.preferredHighContrastLightColorTheme": "Gitpod Dark",
+    "workbench.preferredLightColorTheme": "Gitpod Dark"
 }

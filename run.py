@@ -12,8 +12,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('BabyCalc')
 
-sheet = SHEET.worksheet('Sheet1')
+def get_baby_data():
+    """
+    Get baby's data from the user
+    """
+    print("Please enter your baby's age in weeks and weight in kilograms")
+    print("Data should be two numbers separated by a comma")
+    print("Example: 4, 3.57\n")
 
-data = sheet.get_all_values()
+    baby_str = input("Enter your data here:")
+    print(f"The data provided is {baby_str}")
 
-print(data)
+get_baby_data()
