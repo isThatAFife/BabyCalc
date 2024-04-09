@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -57,10 +58,23 @@ def update_baby_worksheet(data):
     Update baby worksheet, add new row with list data provided
     """
     print("Updating baby worksheet...\n")
-    baby_worksheet = SHEET.worksheet("Sheet1")
+    baby_worksheet = SHEET.worksheet("UserInput")
     baby_worksheet.append_row(data)
     print("Baby worksheet updated successfully.\n")
 
-data = get_baby_data()
-baby_data = [float(num) for num in data]
-update_baby_worksheet(baby_data)
+def calculate_formula_ml():
+    print("Calculating formula...")
+    result = SHEET.worksheet("UserInput").get_all_values()
+    result_row = result[-1]
+    print(result_row)
+
+def main():
+    """
+    Run all program functions
+    """
+    data = get_baby_data()
+    baby_data = [float(num) for num in data]
+    update_baby_worksheet(baby_data)
+
+print("Welcome to BabyCalc!\n")
+main()
