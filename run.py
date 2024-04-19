@@ -55,12 +55,38 @@ def validate_data(values):
 
 def update_baby_worksheet(data):
     """
-    Update baby worksheet, add new row with list data provided
+    Update baby worksheet, add new row with list data provided.
+    Also, calculate and return the change in age and weight since the previous entry.
+    
+    Args:
+        data (list): A list containing the baby's age in weeks and weight in kilograms.
+        
+    Returns:
+        tuple: A tuple containing the change in age (in weeks) and weight (in kilograms) since the previous entry.
     """
     print("Updating baby worksheet...\n")
     baby_worksheet = SHEET.worksheet("UserInput")
+    
+    # Get the previous entry, if any
+    previous_data = baby_worksheet.get_all_values()
+    if len(previous_data) > 0:
+        # Check if the previous data row is valid
+        if all(x.strip() for x in previous_data[-1]):
+            previous_age_weeks, previous_weight_kg = [float(x) for x in previous_data[-1]]
+        else:
+            previous_age_weeks, previous_weight_kg = 0, 0
+    else:
+        previous_age_weeks, previous_weight_kg = 0, 0
+    
+    # Calculate the change in age and weight
+    age_change_weeks = data[0] - previous_age_weeks
+    weight_change_kg = data[1] - previous_weight_kg
+    
+    # Append the new data to the worksheet
     baby_worksheet.append_row(data)
+    
     print("Baby worksheet updated successfully.\n")
+    return age_change_weeks, weight_change_kg
 
 def calculate_formula_amount(age_weeks, weight_kg):
     """
