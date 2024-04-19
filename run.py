@@ -30,7 +30,7 @@ def get_baby_data():
         baby_data = baby_str.split(",")
 
         if validate_data(baby_data):
-            print("Baby is valid!")
+            print("Data is valid!")
             break
 
     return baby_data
@@ -62,11 +62,29 @@ def update_baby_worksheet(data):
     baby_worksheet.append_row(data)
     print("Baby worksheet updated successfully.\n")
 
-def calculate_formula_ml():
-    print("Calculating formula...")
-    result = SHEET.worksheet("UserInput").get_all_values()
-    result_row = result[-1]
-    print(result_row)
+def calculate_formula_amount(age_weeks, weight_kg):
+    """
+    Calculates the amount of formula (in milliliters) a baby needs per day
+    based on their age in weeks and weight in kilograms.
+    
+    Args:
+        age_weeks (float): The baby's age in weeks.
+        weight_kg (float): The baby's weight in kilograms.
+        
+    Returns:
+        float: The amount of formula (in milliliters) the baby needs per day.
+    """
+    if age_weeks < 2:
+        formula_ml_per_kg_per_day = 150
+    elif age_weeks < 6:
+        formula_ml_per_kg_per_day = 120
+    elif age_weeks < 12:
+        formula_ml_per_kg_per_day = 110
+    else:
+        formula_ml_per_kg_per_day = 100
+    
+    formula_amount_ml_per_day = formula_ml_per_kg_per_day * weight_kg
+    return formula_amount_ml_per_day
 
 def main():
     """
