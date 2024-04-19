@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -25,7 +24,7 @@ def get_baby_data():
         print("Data should be two numbers separated by a comma")
         print("Example: 4, 3.57\n")
 
-        baby_str = input("Enter your data here: ")
+        baby_str = input("Enter your data here:\n")
         
         baby_data = baby_str.split(",")
 
