@@ -59,13 +59,16 @@ def validate_data(values):
 def update_baby_worksheet(data):
     """
     Update baby worksheet, add new row with list data provided.
-    Also, calculate and return the change in age and weight since the previous entry.
+    Also, calculate and return the change in age and weight since
+    the previous entry.
 
     Args:
-        data (list): A list containing the baby's age in weeks and weight in kilograms.
+        data (list): A list containing the baby's age in weeks
+        and weight in kilograms.
 
     Returns:
-        tuple: A tuple containing the change in age (in weeks) and weight (in kilograms) since the previous entry.
+        tuple: A tuple containing the change in age (in weeks)
+        and weight (in kilograms) since the previous entry.
     """
     print("Updating baby worksheet...\n")
     baby_worksheet = SHEET.worksheet("UserInput")
@@ -129,12 +132,17 @@ def main():
 
         # Calculate the formula amount
         formula_amount_ml = calculate_formula_amount(age_weeks, weight_kg)
-        print(f"Your baby needs {formula_amount_ml:.2f} millilitres of formula per day\n")
+        print(
+            f"Your baby needs {
+                formula_amount_ml:.2f} millilitres of formula per day\n")
 
         # Update the spreadsheet and get the change in age and weight
         age_change_weeks, weight_change_kg = update_baby_worksheet(baby_data)
-        print(f"Since the last entry, your baby's age has changed by {age_change_weeks:.2f} weeks and their weight has changed by {weight_change_kg:.2f} kilograms.\n")
-        
+        print(
+            f"Since the last entry, your baby's age has changed by {
+                age_change_weeks:.2f} weeks and their weight has changed by {
+                    weight_change_kg:.2f} kilograms.\n")
+
         # Ask the user if they want to run the program again or exit
         user_input = input("Do you want to run the program again? (y/n): ")
         if user_input.lower() != "y":
@@ -142,15 +150,15 @@ def main():
             sys.exit(0)
 
 
-banner = """ 
-______       _           _____       _      
-| ___ \\     | |         /  __ \\     | |     
-| |_/ / __ _| |__  _   _| /  \\/ __ _| | ___ 
+banner = """
+______       _           _____       _
+| ___ \\     | |         /  __ \\     | |
+| |_/ / __ _| |__  _   _| /  \\/ __ _| | ___
 | ___ \\/ _` | '_ \\| | | | |    / _` | |/ __|
-| |_/ / (_| | |_) | |_| | \\__/\\ (_| | | (__ 
+| |_/ / (_| | |_) | |_| | \\__/\\ (_| | | (__
 \\____/ \\__,_|_.__/ \\__, |\\____/\\__,_|_|\\___|
-                    __/ |                   
-                   |___/                    
+                    __/ |
+                   |___/
 """
 print(banner)
 print("Welcome to BabyCalc!\n")
