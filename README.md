@@ -16,9 +16,9 @@ BabyCalc is a Python script that helps parents track their baby's age and weight
 
 * [Deployment & Local Development](#deployment--local-development)
   * [Deployment](#deployment)
-  * [Local Development](#local-development)
     * [How to Fork](#how-to-fork)
     * [How to Clone](#how-to-clone)
+    * [APIs](#apis)
 
 * [Testing](#testing)
 
@@ -89,7 +89,7 @@ The data for the application regarding appointments is stored in a google sheet.
 
 ## Deployment & Local Development
 
-### Deploying the App
+### Deployment
 
 The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
 
@@ -122,7 +122,7 @@ The deployment of the project was done using [Heroku](https://www.heroku.com/) t
 
 NB - If you wish to rebuild the deployed app automatically every time you push to GitHub, you may click on "Enable Automatic Deploys".
 
-### Forking The Repository
+### How to Fork
 
 This can be done to create a copy of the repository. The copy can be viewed and edited without affecting the original repository.
 
@@ -130,7 +130,7 @@ To fork the repository through GitHub, take the following steps:
 1. In the "BabyCalc" repository, click on the "fork" tab in the top right corner.
 2. Click on "create fork" to fork the repository.
 
-### Cloning The Repository
+### How to Clone
 
 To clone the repository through GitHub:
 
@@ -142,7 +142,7 @@ To clone the repository through GitHub:
 6. Type "git clone" and paste the URL that was copied from the repository.
 7. Press the "enter" key to create the clone.
 
-### APIs 
+### APIs
 In order for the app to function properly, APIs need to be set up and connected. In particular, the following APIs were used for this project:
 
 * Google Drive API.
