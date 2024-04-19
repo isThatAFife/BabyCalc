@@ -118,7 +118,15 @@ def main():
     """
     data = get_baby_data()
     baby_data = [float(num) for num in data]
-    update_baby_worksheet(baby_data)
+    age_weeks, weight_kg = baby_data
+
+   # Calculate the formula amount
+    formula_amount_ml = calculate_formula_amount(age_weeks, weight_kg)
+    print(f"Your baby needs {formula_amount_ml:.2f} millilitres of formula per day")
+
+    # Update the spreadsheet and get the change in age and weight
+    age_change_weeks, weight_change_kg = update_baby_worksheet(baby_data)
+    print(f"Since the last entry, your baby's age has changed by {age_change_weeks:.2f} weeks and their weight has changed by {weight_change_kg:.2f} kilograms.")
 
 print("Welcome to BabyCalc!\n")
 main()
