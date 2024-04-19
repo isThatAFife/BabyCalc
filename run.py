@@ -30,7 +30,7 @@ def get_baby_data():
         baby_data = baby_str.split(",")
 
         if validate_data(baby_data):
-            print("Data is valid!")
+            print("Data is valid!\n")
             break
 
     return baby_data
@@ -122,11 +122,12 @@ def main():
 
    # Calculate the formula amount
     formula_amount_ml = calculate_formula_amount(age_weeks, weight_kg)
-    print(f"Your baby needs {formula_amount_ml:.2f} millilitres of formula per day")
+    print(f"Your baby needs {formula_amount_ml:.2f} millilitres of formula per day\n")
 
     # Update the spreadsheet and get the change in age and weight
     age_change_weeks, weight_change_kg = update_baby_worksheet(baby_data)
-    print(f"Since the last entry, your baby's age has changed by {age_change_weeks:.2f} weeks and their weight has changed by {weight_change_kg:.2f} kilograms.")
+    print(f"Since the last entry, your baby's age has changed by {age_change_weeks:.2f} weeks and their weight has changed by {weight_change_kg:.2f} kilograms.\n")
+    print("Thank you for using BabyCalc")
 
 print("Welcome to BabyCalc!\n")
 main()
