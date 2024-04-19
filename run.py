@@ -126,7 +126,18 @@ def main():
     # Update the spreadsheet and get the change in age and weight
     age_change_weeks, weight_change_kg = update_baby_worksheet(baby_data)
     print(f"Since the last entry, your baby's age has changed by {age_change_weeks:.2f} weeks and their weight has changed by {weight_change_kg:.2f} kilograms.\n")
-    print("Thank you for using BabyCalc")
+    print("Thank you for using BabyCalc!")
 
+banner = """ 
+______       _           _____       _      
+| ___ \\     | |         /  __ \\     | |     
+| |_/ / __ _| |__  _   _| /  \\/ __ _| | ___ 
+| ___ \\/ _` | '_ \\| | | | |    / _` | |/ __|
+| |_/ / (_| | |_) | |_| | \\__/\\ (_| | | (__ 
+\\____/ \\__,_|_.__/ \\__, |\\____/\\__,_|_|\\___|
+                    __/ |                   
+                   |___/                    
+"""
+print(banner)
 print("Welcome to BabyCalc!\n")
 main()
